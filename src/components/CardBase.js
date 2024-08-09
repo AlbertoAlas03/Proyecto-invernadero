@@ -27,10 +27,7 @@ const CardBase = ({ last_data }) => {
       console.log(resjson[resjson.length-1])
     })
   }
-
-useEffect(()=>{
-  fetch_last_data()
-},[]);*/
+*/
 
   return (
     <Grid
