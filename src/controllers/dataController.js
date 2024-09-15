@@ -86,14 +86,13 @@ function isDateValid(dateStr) {
 };
 
 exports.add = async (req, res) => {
-    const { temperatura, humedad_relativa, CO2, VOC, intensidad_luminosa } = req.body;
+    const { Temperatura, Humedad, Nivel_del_Gas, Distancia } = req.body;
 
     const data = new Data({
-        temperatura: temperatura || 0,
-        humedad_relativa: humedad_relativa || 0,
-        CO2: CO2 || 0,
-        VOC: VOC || 0,
-        intensidad_luminosa: intensidad_luminosa || 0,
+        Temperatura: Temperatura || 0,
+        Humedad: Humedad || 0,
+        Nivel_del_Gas: Nivel_del_Gas || 0,
+        Distancia: Distancia || 0
     })
 
     try {
@@ -125,7 +124,6 @@ exports.delete = async (req, res, next) => {
     try {
         const data = await Data.findOneAndDelete({ id: req.params.id });
         res.json({ message: "Deleted message", data: data });
-
     } catch (error) {
         console.log(error);
         res.status(400).json({ message: "El mensaje no existe" });

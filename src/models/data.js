@@ -2,26 +2,22 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const dataSchema = new Schema({
-    temperatura:{
+    Temperatura:{
         type: String,
         required : true
     },
-    humedad_relativa:{
+    Humedad:{
         type: String,
         required : true
     },
-    CO2:{
+    Nivel_del_Gas:{
         type: String,
         required : true
     },
-    VOC:{
+    Distancia:{
         type: String,
         required : true
-    },
-    intensidad_luminosa:{
-        type: String,
-        trim: true,
-    },
+    }
 },{ timestamps: true });
 
 module.exports = mongoose.model('Data',dataSchema);

@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { MongoClient } = require("mongodb");
+require('dotenv').config();
 
 
 //settings
@@ -13,7 +14,7 @@ const port = process.env.PORT || 3001;
 app.set('json spaces', 2);
 
 //mongodb connect
-const uri = "mongodb+srv://oa3973392:ki2OLvimC4KNXYZ3@cluster0.7z7le.mongodb.net/";
+const uri = process.env.Mongo_uri;
 //const uri = "mongodb://192.168.6.215:27017";
 
 mongoose.Promise = global.Promise;
