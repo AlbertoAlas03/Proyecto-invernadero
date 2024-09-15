@@ -1,7 +1,6 @@
 import { TabGroup, TabList, Tab, TabPanel, TabPanels, Flex } from "@tremor/react";
 import React, { useState, useEffect } from "react";
 import OverallChart from "./OverallChart";
-import logo_IIIE from "../IIIE.png";
 import CardBase from "./CardBase";
 import Charts from "./Charts";
 import url_data from "./Data";
@@ -42,22 +41,6 @@ const Dasboard = () => {
                     <div className="container-fluid">
                         <div className="navbar-brand">
                             <Flex>
-                                <img justifyContent="end"
-                                    alt="logo_UDB"
-                                    src={logo_IIIE}
-                                    style={{
-                                        height: 80,
-                                        width: 80
-                                    }}
-                                />
-                                <img
-                                    alt="logo_IIIE"
-                                    src={logo_IIIE}
-                                    style={{
-                                        height: 70,
-                                        width: 70
-                                    }}
-                                />
                             </Flex>
                         </div>
                         <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">

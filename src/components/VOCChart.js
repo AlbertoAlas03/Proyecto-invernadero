@@ -1,26 +1,26 @@
 import React from 'react';
 import { Card, Title, Flex,Badge } from "@tremor/react";
-import img_voc from "../img/planet-earth.png";
+import img_distancia from "../img/sensor-de-movimiento.png";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { StatusOnlineIcon } from '@heroicons/react/outline';
 
-const dataFormatterVOC = (number) => `${Intl.NumberFormat("us").format(number).toString()}mg/m3`;
+const dataFormatterVOC = (number) => `${Intl.NumberFormat("us").format(number).toString()}cm`;
 
 const VOCChart = ({data}) => {
 
    // Encuentra los valores máximos y mínimos de VOC en los datos 
-  const VOC = data.map(data => parseInt(data.VOC));
+  const VOC = data.map(data => parseInt(data.Distancia));
   const maxvoc = Math.max(...VOC)+10;
   const minvoc = 0;
 
   return(
   <Card decoration="top" decorationColor="emerald">
     <Flex>
-    <Title>Gráfica VOC recolectado (mg/m3)</Title>
+    <Title>Gráfica distancias registradas (cm)</Title>
     <Badge icon={StatusOnlineIcon}>LIVE</Badge>
     <img 
       alt="planet"
-      src={img_voc}
+      src={img_distancia}
       style={{
         height: 60,
         widows: 60
@@ -44,7 +44,7 @@ const VOCChart = ({data}) => {
           <YAxis domain={[minvoc, maxvoc]}/>
           <Tooltip />
           <Legend />
-          <Bar dataKey="VOC" fill="#22BC00" formatter={dataFormatterVOC}/>
+          <Bar dataKey="Distancia" fill="#22BC00" formatter={dataFormatterVOC}/>
         </BarChart>
       </ResponsiveContainer>
   </Card>

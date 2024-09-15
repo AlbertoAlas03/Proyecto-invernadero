@@ -18,7 +18,7 @@ const dataFormatterHumidity = (number) => `${Intl.NumberFormat("us").format(numb
 const HumidityChart = ({data}) => { 
 
  // Encuentra los valores máximos y mínimos de humedad en los datos 
-    const humedad = data.map(data => parseInt(data.humedad_relativa));
+    const humedad = data.map(data => parseInt(data.Humedad));
     const maxhumedad = Math.max(...humedad);
 
   return(
@@ -54,7 +54,7 @@ const HumidityChart = ({data}) => {
       <Legend />
       <Line
         type="monotone"
-        dataKey="humedad_relativa"
+        dataKey="Humedad"
         stroke="#3498DB"
         activeDot={{ r: 8 }}
         formatter={dataFormatterHumidity}

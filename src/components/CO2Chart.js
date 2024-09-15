@@ -20,14 +20,14 @@ const dataFormatterCO2 = (number) => `${Intl.NumberFormat("us").format(number).t
 const CO2Chart = ({data}) => {
 
    // Encuentra los valores máximos y mínimos de CO2 en los datos 
- const CO2 = data.map(data => parseInt(data.CO2));
- const maxco2 = Math.max(...CO2)+10;
+ const Nivel_del_Gas = data.map(data => parseInt(data.Nivel_del_Gas));
+ const maxco2 = Math.max(...Nivel_del_Gas)+10;
  const minco2 = 0;
 
   return(
 <Card decoration="top" decorationColor="stone">
   <Flex>
-  <Title>Gráfica CO2 registrado (mg)</Title>
+  <Title>Gráfica gases registrados (ppm)</Title>
     <Badge icon={StatusOnlineIcon}>LIVE</Badge>
     <img 
     alt="co2"
@@ -57,7 +57,7 @@ const CO2Chart = ({data}) => {
       <Legend />
       <Line
         type="monotone"
-        dataKey="CO2"
+        dataKey="Nivel_del_Gas"
         stroke="grey"
         activeDot={{ r: 8 }}
         formatter={dataFormatterCO2}

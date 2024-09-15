@@ -12,24 +12,22 @@ const DataToExcel = ({ data, filename, sheetName }) => {
         }
 
         // Media de todos los campos
-        const TotalTemperatures = data.reduce((total, { temperatura }) => parseFloat(total) + parseFloat(temperatura), 0) / data.length;
-        const TotalHumiditys = data.reduce((total, {humedad_relativa}) => parseFloat(total) + parseFloat(humedad_relativa),0) / data.length;
-        const TotalCO2 = data.reduce((total, {CO2}) => parseFloat(total) + parseFloat(CO2),0) / data.length;
-        const TotalVOC = data.reduce((total, {VOC}) => parseFloat(total) + parseFloat(VOC),0) / data.length;
-        const TotalIntensity = data.reduce((total, {intensidad_luminosa}) => parseFloat(total) + parseFloat(intensidad_luminosa),0) / data.length;
+        const TotalTemperatures = data.reduce((total, { Temperatura }) => parseFloat(total) + parseFloat(Temperatura), 0) / data.length;
+        const TotalHumiditys = data.reduce((total, {Humedad}) => parseFloat(total) + parseFloat(Humedad),0) / data.length;
+        const TotalCO2 = data.reduce((total, {Nivel_del_Gas}) => parseFloat(total) + parseFloat(Nivel_del_Gas),0) / data.length;
+        const TotalDistancia = data.reduce((total, {Distancia}) => parseFloat(total) + parseFloat(Distancia),0) / data.length;
 
         // Campos a exportar
-        const Fields = data.map(({ temperatura, humedad_relativa, CO2, VOC, intensidad_luminosa, createdAt }) => ({
-            temperatura,
-            humedad_relativa,
-            CO2,
-            VOC,
-            intensidad_luminosa,
+        const Fields = data.map(({ Temperatura, Humedad, Nivel_del_Gas, Distancia, createdAt }) => ({
+            Temperatura,
+            Humedad,
+            Nivel_del_Gas,
+            Distancia,
             createdAt
         }));
 
         // Encabezado de la hoja
-        const header = ['Temperaturas (°C)', 'Humedades Relativas (%)', 'CO2 (mg)', 'VOC (mg/m3)', 'Intensidades Luminosas (LUX)', 'Fecha y hora de publicación'];
+        const header = ['Temperaturas (°C)', 'Humedades(%)', 'Niveles de gas (mg)', 'Distancias (mg/m3)', 'Fecha y hora de publicación'];
 
         // Combinación de datos y el encabezado
         const sheetData = [header, ...Fields.map(item => Object.values(item))];
@@ -37,10 +35,9 @@ const DataToExcel = ({ data, filename, sheetName }) => {
         // Agregar la media de los datos al final de la hoja
         const TemperaturesRow = ['Porcentaje de temperatura registrada: ', (TotalTemperatures.toFixed(2)) + '%'];
         const HumidityRow = ['Porcentaje de humedad registrada: ', (TotalHumiditys.toFixed(2)) + '%'];
-        const CO2Row = ['Porcentaje de CO2 registrada: ', (TotalCO2.toFixed(2)) + '%'];
-        const VOCRow = ['Porcentaje de VOC registrada: ', (TotalVOC.toFixed(2)) + '%'];
-        const IntensityRow = ['Porcentaje de intensidad luminosa registrada: ', (TotalIntensity.toFixed(2)) + '%'];
-        sheetData.push(TemperaturesRow, HumidityRow, CO2Row, VOCRow, IntensityRow);
+        const CO2Row = ['Porcentaje de nivel del gas registrado: ', (TotalCO2.toFixed(2)) + '%'];
+        const DistanciaRow = ['Porcentaje de distancia recorrida: ', (TotalDistancia.toFixed(2)) + '%'];
+        sheetData.push(TemperaturesRow, HumidityRow, CO2Row, DistanciaRow);
 
         // Crear una nueva hoja de cálculo
         const ws = XLSX.utils.aoa_to_sheet(sheetData);

@@ -4,7 +4,6 @@ import TemperatureChart from "./TemperatureChart";
 import HumidityChart from "./HumidityChart";
 import CO2Chart from "./CO2Chart";
 import VOCChart from "./VOCChart";
-import IntensityChart from "./IntensityChart";
 import url_data from "./Data";
 import DataToExcel from "./DataToExcel";
 import { subDays } from "date-fns";
@@ -155,7 +154,6 @@ const ChartsData = () => {
             <CO2Chart data={data} />
           </Col>
           <VOCChart data={data} />
-          <IntensityChart data={data} />
         </Grid>
       </>
         :

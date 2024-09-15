@@ -3,8 +3,7 @@ import { Grid, Col, Card, Text, Metric, Title, Flex, Badge, Legend, CategoryBar,
 import thermometer from "../img/thermometer.png";
 import humidity_img from "../img/Humity.png";
 import co2 from "../img/co2.png";
-import planet from "../img/planet-earth.png";
-import ligh_bulb from "../img/light-bulb.png";
+import distancia from "../img/sensor-de-movimiento.png";
 import {
   StatusOnlineIcon
 } from "@heroicons/react/outline";
@@ -52,27 +51,27 @@ const CardBase = ({ last_data }) => {
                 }}
               />
             </div>
-            <Metric>{formatCelsius(last_data.temperatura)}°C / {convertCelsiusToFahrenheit(last_data.temperatura)}°F</Metric>
+            <Metric>{formatCelsius(last_data.Temperatura)}°C / {convertCelsiusToFahrenheit(last_data.Temperatura)}°F</Metric>
             <Badge icon={StatusOnlineIcon}>LIVE</Badge>
           </Flex>
           <Flex className="mt-6">
             <Text>Medidor de temperatura (°C)</Text>
-            <Text>{last_data.temperatura}°C</Text>
+            <Text>{last_data.Temperatura}°C</Text>
           </Flex>
           <CategoryBar
             values={[20, 10, 70]}
             colors={["sky", "orange", "rose"]}
-            markerValue={last_data.temperatura}
+            markerValue={last_data.Temperatura}
             className="mt-3"
           />
           <Flex className="mt-6">
             <Text>Medidor de temperatura (°F)</Text>
-            <Text>{convertCelsiusToFahrenheit(last_data.temperatura)}°F</Text>
+            <Text>{convertCelsiusToFahrenheit(last_data.Temperatura)}°F</Text>
           </Flex>
           <CategoryBar
             values={[68, 18, 14]}
             colors={["sky", "orange", "rose"]}
-            markerValue={convertCelsiusToFahrenheit(last_data.temperatura)}
+            markerValue={convertCelsiusToFahrenheit(last_data.Temperatura)}
             className="mt-3"
           />
           <Legend
@@ -98,14 +97,14 @@ const CardBase = ({ last_data }) => {
               }}
             />
           </div>
-          <Metric>{last_data.humedad_relativa}%</Metric>
+          <Metric>{last_data.Humedad}%</Metric>
           <Badge icon={StatusOnlineIcon}>LIVE</Badge>
         </Flex>
         <Flex className="mt-6">
           <Text className="mt-6">Medidor de humedad</Text>
-          <Text className="mt-6">{last_data.humedad_relativa}%</Text>
+          <Text className="mt-6">{last_data.Humedad}%</Text>
         </Flex>
-        <ProgressBar value={last_data.humedad_relativa} color="blue" className="mt-3" />
+        <ProgressBar value={last_data.Humedad} color="blue" className="mt-3" />
         <Legend
           className="mt-3"
           categories={["Nivel de húmedad"]}
@@ -115,7 +114,7 @@ const CardBase = ({ last_data }) => {
       <Col>
         <Card decoration="top" decorationColor="stone">
           <Flex justifyContent="center">
-            <Title>CO2 registrado</Title>
+            <Title>Nivel del Gas registrado</Title>
           </Flex>
           <Flex className="mt-6">
             <div>
@@ -128,44 +127,26 @@ const CardBase = ({ last_data }) => {
                 }}
               />
             </div>
-            <Metric>{last_data.CO2} mg</Metric>
+            <Metric>{last_data.Nivel_del_Gas} ppm</Metric>
             <Badge icon={StatusOnlineIcon}>LIVE</Badge>
           </Flex>
         </Card>
       </Col>
       <Card decoration="top" decorationColor="emerald">
         <Flex justifyContent="center">
-          <Title>VOC registrado</Title>
+          <Title>A nivel de distancia</Title>
         </Flex>
         <Flex className="mt-6">
           <div>
             <img
               alt="planet"
-              src={planet}
+              src={distancia}
               style={{
                 height: 60,
                 widows: 60
               }} />
           </div>
-          <Metric>{last_data.VOC} mg/m3</Metric>
-          <Badge icon={StatusOnlineIcon}>LIVE</Badge>
-        </Flex>
-      </Card>
-      <Card decoration="top" decorationColor="yellow">
-        <Flex justifyContent="center">
-          <Title>Intensidad luminosa</Title>
-        </Flex>
-        <Flex className="mt-6">
-          <div>
-            <img
-              alt="lightbulb"
-              src={ligh_bulb}
-              style={{
-                height: 60,
-                widows: 60
-              }} />
-          </div>
-          <Metric>{last_data.intensidad_luminosa} LUX</Metric>
+          <Metric>{last_data.Distancia} cm</Metric>
           <Badge icon={StatusOnlineIcon}>LIVE</Badge>
         </Flex>
       </Card>
